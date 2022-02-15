@@ -1,0 +1,37 @@
+\title{Notes for Chapter 2: Basic Structures}
+\author{Elias Schablowski}
+\documentclass{article}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{hyperref}
+
+\begin{document}
+    \section{2.1 - Sets}
+        Sets are groups of objects, often Numbers.
+        Objects in sets usually have something in common, as otherwise a set would be nonsensical.
+        \subsection{Common Sets}
+            \begin{enumerate}
+                \item The set of all Complex numbers - $\mathbb{C}$ (\textbackslash mathbb\{C\})
+                \item The set of all Real numbers - $\mathbb{R}$ (\textbackslash mathbb\{R\})
+                \item The set of all Rational numbers - $\mathbb{Q}$ (\textbackslash mathbb\{Q\})
+                \item The set of all Integer numbers - $\mathbb{Z}$ (\textbackslash mathbb\{Z\})
+                \item The set of all Natural numbers - $\mathbb{N}$ (\textbackslash mathbb\{M\})
+                \item The set of all Imaginary numbers - $\mathbb{I}$ (\textbackslash mathbb\{I\})
+                \item The empty Set - $\emptyset$ or $\{\}$ (\textbackslash emptyset or \textbackslash \{ \textbackslash \})
+            \end{enumerate}
+            $$\mathbb{N} \in \mathbb{Z} \in \mathbb{Q} \in \mathbb{R} \in \mathbb{C}$$
+            $$\mathbb{I} \in \mathbb{C}$$
+        \subsection{Subsets}
+            The set $A$ is a \textit{subset} of $B$ iff $B$ contains \textbf{all} objects of $A$.
+            $A$ being a subset of $B$ can also be expressed as $B$ is a \textit{superset} of $A$.
+            Subsets are written as $\in$ (\textbackslash in) in equations.
+        \subsection{Size of a Set}
+            $| S |$ denotes the size, or number of \textit{distinct}\footnote{Distinct objects means that equivalent objects are only counted once, e.g. $|{2, 2}| = 1$ as $2$ is only counted once} objects in set $S$.
+            Size is also called the \textit{Cardinality} of a \textbf{finite} set.
+        \subsection{Power Sets}
+            A Power Set is one that includes all subsets of another set.
+            Power Sets are denoted by $\mathcal{P}(S)$ (\textbackslash mathcal \{ P\} (S)) in equations.
+        \subsection{Ordered n-tuple}
+            An ordered n-tuple is an ordered collection denoted by $(a_1, a_2, ...)$ ((a\_1, a\_2, ...))
+            Ordered tuples are equal if they have the same elements at the same locations.
+\end{document}

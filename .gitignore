@@ -1,0 +1,13 @@
+# MacOS Files
+.DS_Store
+
+# LaTeX itermediate outputs
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+
+# Homework, DO NOT PUSH
+/HW
