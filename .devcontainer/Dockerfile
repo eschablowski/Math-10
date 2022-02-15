@@ -4,8 +4,18 @@
 ARG VARIANT="hirsute"
 FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
 
+RUN mkdir /texlive && chown vscode /texlive
+
+USER vscode
+COPY texlive.profile /tmp/texlive-profile
 # [Optional] Uncomment this section to install additional OS packages.
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends texlive-full
+RUN cd /tmp && sudo apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && sudo apt-get -y install --no-install-recommends wget \
+    && wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz \
+    && tar -xf install-tl-unx.tar.gz \
+    && cd install-tl-* \
+    && ./install-tl --profile=/tmp/texlive-profile
 
-
+COPY texlive-paths.sh /etc/profile.d/texlive.sh
+RUN /texlive/bin/x86_64-linux/tlmgr install latexmk scheme-small
+RUN /texlive/bin/x86_64-linux/tlmgr install fancyhdr zref
