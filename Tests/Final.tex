@@ -1,0 +1,209 @@
+\documentclass[letterpaper,12pt,addpoints,answers]{exam}
+%\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in]{geometry}
+\usepackage{amsmath,amssymb,graphicx,xcolor,asymptote}
+\usepackage[pdf]{graphviz}
+\usepackage{float}
+
+\newcommand{\university}{SANTA MONICA COLLEGE}
+\newcommand{\faculty}{Department of Mathematics}
+\newcommand{\class}{Math 10}
+\newcommand{\examnum}{Final Exam}
+\newcommand{\content}{Discrete Structures}
+\newcommand{\examdate}{June 6-8, 2021}
+\newcommand{\timelimit}{12AM-11:59PM}
+
+\newcommand{\tf}{$\quad\quad T\quad F$}
+\newcommand{\tft}{$\quad\quad \boxed T\quad F$}
+\newcommand{\tff}{$\quad\quad T\quad \boxed F$}
+\newcommand{\tfnt}{$\quad\quad \boxed T\quad F\quad$neither}
+\newcommand{\tfnf}{$\quad\quad T\quad \boxed F\quad$neither}
+\newcommand{\tfnn}{$\quad\quad T\quad F\quad \boxed{\text{ neither}}$}
+\newcommand{\tfn}{$\quad\quad T\quad F\quad$neither}
+
+
+\pagestyle{headandfoot}
+\firstpageheader{}{}{}
+\firstpagefooter{}{Page \thepage\ of \numpages}{}
+\runningheader{\class}{\examnum}{\examdate}
+\runningheadrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\begin{document}
+
+\title{\Large \textbf{\university\\ \faculty\\
+        \bigskip
+        \class -- \examnum }}
+\author{Instructor: Kevin Arlin}
+\date{\examdate}
+\maketitle
+\noindent \rule{\textwidth}{1pt}
+
+Submit your work, typed, as a .pdf or .tex file on Canvas as usual.
+
+This exam allows one sheet of handwritten notes. Handheld calculators are allowed.
+\textcolor{red}{It is not open Internet.}  I take
+academic honesty during COVID even more seriously than usual, and have been known to
+be rather vindictive when I see solutions that were garnered online. Nobody wants that.
+Don't do it. I am generous with curves for honest students.
+
+Show your work. Partial credit will be given when earned. Explanations are
+required unless explicitly not requested.
+
+
+\begin{center}
+    \textbf{Distribution of Points}\\
+    \medskip
+    \multicolumngradetable{2}[questions]
+\end{center}
+
+\clearpage
+
+\begin{questions}
+
+    \question For any string $s\in A^*$ where $A=\{a,b,c,d,\ldots,x,y,z\},$ say another
+    string in $A^*$ \emph{avoids $s$} if $s$ does not occur as a substring.
+    \begin{parts}
+        \part[4] Derive a recurrence relation for the number $a_n$ of strings in $A^*$ that avoid the string `ck', including initial conditions.
+        \begin{solutionorlines}[2in]
+            $a_1 = 26$, and $a_2 = 26 * 25$
+            Let $c_k$ be the number of strings in $A^*$ that do \textbf{not} end in \textit{'c'} and avoid the string \textit{'ck'}.
+            $c_k = a_{k-1} * 25$, removing \textit{'c'}.
+            $a_n = 25 * c_{n-1} * 26$, avoiding \textit{'k'} when ending with \textit{'c'} and allowing any letter otherwise.
+            \begin{equation}
+                a_n = 25 * (a_{n-2} * 25) * 26
+            \end{equation}
+        \end{solutionorlines}
+        \part[3] By finding a closed form for $a_n,$ how many digits does $a_{50}$ have? You may use a programming language or WolframAlpha for this.
+        \setlength\answerlinelength{5in}
+        \answerline[$19151123960735656846813146744436007044769689232586820865 * 10^{49}$]
+        \part[4] Derive a recurrence relation for the number $b_n$ of strings that avoid the string `ack'.
+        \begin{solutionorlines}[2in]
+            $b_1 = 26$, $b_2 = 26 * 26$, $b_3 = 26 * 26 * 25$
+            Let $c_k$ be the number of strings in $A^*$ that do \textbf{not} end in \textit{'ac'} and avoid the string \textit{'ack'}.
+            $c_k = a_{k-2} * 26 * 25$, removing \textit{'c'}.
+            $b_n = 25 * c_{n-1} * 26$, avoiding \textit{'ak'} when ending with \textit{'ac'} and allowing any letter otherwise.
+            $$b_n = 25 * (b_{n-3} * 26 * 25) + 26$$
+        \end{solutionorlines}
+        \part[3] Compute $b_5$ using inclusion-exclusion.
+        \begin{solutionorlines}[2in]
+            \paragraph{Excluded Strings:} \textit{ack\textbf{xx}}, \textit{\textbf{x}ack\textbf{x}}, and \textit{\textbf{xx}ack}
+            $$n(excluded) = 3 * 26^2$$
+            $$b_5 = 26^5 - 3 * 26^2 = 11879348$$
+        \end{solutionorlines}
+    \end{parts}
+    \question
+    \begin{parts}
+        \part[4] Explain which axioms of an equivalence relation fail for the relation
+        ''there is a driving route of length less than $0.25$ miles between $x$ and $y$'' on the set of all points in Santa Monica.
+        \begin{solutionorlines}[3in]
+            The relation isn't transitive, as the route from point $A$ to point $B$, and the route from point $B$ to point $C$ can both be less than $0.25$ miles, that does not mean that the rounte $A \to B$ is less than $0.25$ miles.
+        \end{solutionorlines}
+        \part[6] Give an example of an equivalence relation on the set $\mathbb Z$ of integers under which all primes are equivalent, and such that the number of equivalence classes equals the total number of letters in your first and last name combined.
+        \setlength\answerlinelength{5in}
+        \answerline[has the same number of factors modulo 17 as]
+        \begin{solutionorlines}[1in]
+            Since all primes only have themselves and $1$ as factors, they all have $2$ factors.
+
+            Furthermore, since I added the modulo 17, there are only 17 equivalence classes, as it wraps back around to 0.
+        \end{solutionorlines}
+    \end{parts}
+
+    \question[4] Give a natural example of a predicate $P$ of domain the set $H$ of all humans such that $\forall x\in H \exists y \in H (P(x,y))$ is true but $\exists y\in H\forall x\in H (P(x,y))$ is false.
+    \setlength\answerlinelength{5in}
+    \answerline[$P$ is whether $x$ is a biological child of $y$]
+    \begin{solutionorlines}
+        Since all humans $x$ have a parent (excluding the edge case of first human, as that begets the chicken-egg problem), but there is no human $y$ that is a child to ALL humans $x$, as humans typically have $2$ biological parents.
+    \end{solutionorlines}
+
+    \question[5] State and prove which natural numbers can be written in the form $6x+10y$ for some $x,y\in \mathbb N.$
+
+    \begin{solutionorlines}[5in]
+        \paragraph{Base case $16$:} $10 (1) + 6(1) = 16$
+        \paragraph{Inductive Case:} Assume $a_{x,y}$ is can be written in the form $6x+10y$.
+        Then $a_{x,y+1}$ can also be written as $6x+10(y + 1)$, as $a_{x,y+1} = a_{x,y} + 10$.
+        \paragraph{Inductive Case:} Assume $a_{x,y}$ is can be written in the form $6x+10y$.
+        Then $a_{x+1,y}$ can also be written as $6(x + 1)+10y$, as $a_{x+1,y} = a_{x,y} + 6$.
+
+        Therefore $16,22,26,28,32,34,36,\dots$ can be written in the form $6x+10y$.
+
+        $a_1 = 16 + 6 = 22$
+        $a_2 = 16 + 10 = 26$
+        $a_3 = 16 + 6 + 6 = 28$
+
+        Since from these we can add $10$ any number of times, we get that all even numbers greater than 20 can be written in the form $6x+10y$.
+    \end{solutionorlines}
+
+    \question Consider the graph $G=K_{3,4}.$
+    \begin{parts}
+        \part[3] Does $G$ have an Euler circuit? (Why not, if not?)
+        \begin{solutionorlines}[2in]
+            No, since there is no way to go from the last bottom node you have back to the start without going through a used top node.
+        \end{solutionorlines}
+        \part[3] Does $G$ have a Hamilton circuit? (Why not, if not?)
+        \begin{solutionorlines}[2in]
+            No, since there is no euler circuit, it is impossible to get a Hamilton circuit.
+        \end{solutionorlines}
+        \part[4] Is $G$ planar? If so, explain how to draw it without any edges crossing (you may upload a drawing in this case.) If not, prove it is not.
+        \begin{solutionorbox}[2in]
+            \begin{figure}[H]
+                \digraph{abc}{
+                    rankdir=TB;
+                    subgraph top {
+                            T1;
+                            T2;
+                            T3;
+                        }
+                    subgraph bottom {
+                            B1;
+                            B2;
+                            B3;
+                            B4;
+                        }
+                    T1 -> B1 [shape=none];
+                    T1 -> B2 [shape=none];
+                    T1 -> B3 [shape=none];
+                    T1 -> B4 [shape=none];
+                    T2 -> B1 [shape=none];
+                    T2 -> B2 [shape=none];
+                    T2 -> B3 [shape=none];
+                    T2 -> B4 [shape=none];
+                    T3 -> B1 [shape=none];
+                    T3 -> B2 [shape=none];
+                    T3 -> B3 [shape=none];
+                    T3 -> B4 [shape=none];
+                }
+            \end{figure}
+        \end{solutionorbox}
+        \part[6] What are all the isomorphisms $\varphi: G\to G$?
+        \begin{solutionorlines}[2in]
+            Since the top and bottom have no set order, there are $3! * 4! = 144$ ways to draw $G$.
+        \end{solutionorlines}
+    \end{parts}
+
+    \question Let's do some landscaping.
+    \begin{parts}
+        \part[3] How many ways are there to choose six trees from a landscaper that sells orange, lemon, lime, and kumquat trees?
+        \answerline[$4^6 = 4096$]
+        \begin{solution}
+            Since there are $6$ trees to choose from $4$ variants.
+        \end{solution}
+        \part[4] Supposing I bought two orange, two lemon, and two lime trees, how many ways are there to distribute my trees among three identical bins for transport home?
+        \answerline[$3 * 2 = 6$]
+        \begin{solution}
+            Assuming we are distributing evenly.
+
+            Since there are $3$ possible cominations to distribute the two orange trees, and another $2$ possible cominations to distribute the two lime trees, and only one way to distribute the lemon trees (into the remaining spots).
+        \end{solution}
+        \part[7] Let $n$ be the number of ways to arrange my six trees along my driveway. There
+        are several possibilities for $n$ depending on how my trees are distributed among the
+        four species. What are all of these possibilities?
+        \begin{solutionorlines}[2in]
+            $$\sum_{o=0}^6 \sum_{l=0}^{6-o} \sum_{k=0}^{6-l-o} \frac{6!}{o!l!k!(6-o-l-k)!}$$
+            Counting the number of orange, lime, and kumquat (and the rest are lemon), sum all the possibilities.
+        \end{solutionorlines}
+    \end{parts}
+\end{questions}
+\end{document}

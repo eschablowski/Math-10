@@ -1,0 +1,26 @@
+digraph abc {
+rankdir=TB;
+subgraph top {
+T1;
+T2;
+T3;
+}
+subgraph bottom {
+B1;
+B2;
+B3;
+B4;
+}
+T1 -> B1 [shape=none];
+T1 -> B2 [shape=none];
+T1 -> B3 [shape=none];
+T1 -> B4 [shape=none];
+T2 -> B1 [shape=none];
+T2 -> B2 [shape=none];
+T2 -> B3 [shape=none];
+T2 -> B4 [shape=none];
+T3 -> B1 [shape=none];
+T3 -> B2 [shape=none];
+T3 -> B3 [shape=none];
+T3 -> B4 [shape=none];
+}

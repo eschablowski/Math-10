@@ -10,12 +10,11 @@ USER vscode
 COPY texlive.profile /tmp/texlive-profile
 # [Optional] Uncomment this section to install additional OS packages.
 RUN cd /tmp && sudo apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && sudo apt-get -y install --no-install-recommends wget \
+    && sudo apt-get -y install --no-install-recommends wget libyaml-tiny-perl libfile-homedir-perl libunicode-linebreak-perl \
     && wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz \
     && tar -xf install-tl-unx.tar.gz \
     && cd install-tl-* \
     && ./install-tl --profile=/tmp/texlive-profile
 
 COPY texlive-paths.sh /etc/profile.d/texlive.sh
-RUN /texlive/bin/x86_64-linux/tlmgr install latexmk scheme-small
-RUN /texlive/bin/x86_64-linux/tlmgr install fancyhdr zref
+RUN /texlive/bin/x86_64-linux/tlmgr update --self && /texlive/bin/x86_64-linux/tlmgr install fancyhdr zref comment environ mdframed needspace enumitem latexmk latexindent exam babel asymptote

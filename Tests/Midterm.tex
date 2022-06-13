@@ -1,0 +1,294 @@
+\documentclass[letterpaper,12pt,addpoints,answers]{exam}
+%\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in]{geometry}
+\usepackage{amsmath,amssymb,graphicx,xcolor,asymptote}
+\usepackage{embedall}
+
+\newcommand{\university}{SANTA MONICA COLLEGE}
+\newcommand{\faculty}{Department of Mathematics}
+\newcommand{\class}{Math 10}
+\newcommand{\examnum}{Midterm Exam}
+\newcommand{\examdate}{April 8, 2022}
+\newcommand{\timelimit}{24 hours}
+
+\newcommand{\tf}{$\quad\quad T\quad F$}
+\newcommand{\tft}{$\quad\quad \boxed T\quad F$}
+\newcommand{\tff}{$\quad\quad T\quad \boxed F$}
+\newcommand{\tfnt}{$\quad\quad \boxed T\quad F\quad$neither}
+\newcommand{\tfnf}{$\quad\quad T\quad \boxed F\quad$neither}
+\newcommand{\tfnn}{$\quad\quad T\quad F\quad \boxed{\text{ neither}}$}
+\newcommand{\tfn}{$\quad\quad T\quad F\quad$neither}
+
+\pagestyle{headandfoot}
+\firstpageheader{}{}{}
+\firstpagefooter{}{Page \thepage\ of \numpages}{}
+\runningheader{\class}{\examnum}{\examdate}
+\runningheadrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\begin{document}
+
+\title{\Large \textbf{\university\\ \faculty\\
+        \bigskip
+        \class -- \examnum }}
+\author{Instructor: Kevin Arlin}
+\date{\examdate}
+\maketitle
+\noindent \rule{\textwidth}{1pt}
+
+Submit your work as you would any homework assignment: direct submission of a .pdf is ideal.
+The exam is open book and open notes. \textcolor{red}{It is not open Internet.}  I take
+academic honesty during COVID even more seriously than usual, and have been known to
+be rather vindictive when I see solutions that were garnered online. Nobody wants that.
+Don't do it. Not even if you're having lots of trouble with the test. It is fine if you only get
+a 65\%; you might even still get an 'A' that way. I am generous with curves as appropriate,
+and may both award bonus points to the toughest problems here and also curve grades toward the
+end of the course.
+
+Show your work. Partial credit will be given when earned. Explanations are
+required unless explicitly not requested.
+
+\emph{Enter your name below to signal your assent to the following honor statement:}
+
+I, \fillin[\emph{Elias Schablowski}][2.5in] affirm that I have not discussed the contents of this exam with anyone, whether in person or online, except perhaps Kevin Arlin, and that I will not do so before Tuesday, April 12.
+
+\begin{center}
+    \textbf{Distribution of Points}\\
+    \medskip
+    \multicolumngradetable{2}[questions]
+\end{center}
+
+\clearpage
+
+This page is intentionally left blank to accommodate work that wouldn't fit elsewhere and/or scratch work.
+\clearpage
+\emph{Note: this problem serves as your entire quiz 6, but it'll be graded with partial credit.}
+
+\begin{questions}
+    \section*{Quiz 6}
+
+
+    \question[4] Prove that, if $n>0$ is any positive integer, then $\sum_{j=1}^n 4j\cdot 3^j=(6n-3)\cdot 3^n+3.$
+
+    \begin{solutionorbox}[7in]
+        \paragraph{Definitions:}
+        Let $f(n)=\sum_{j=1}^n 4j\cdot 3^j$.
+        $$f(1) = 12$$
+        $$f(n) = f(n-1) + 4n \cdot 3^n$$
+
+        \paragraph{Base Step:} $f(1) = 12 = (6(1) - 3) \cdot 3^{(1)} + 3 = (3) \cdot 3 + 3 = 9 + 3 = 12$
+        \paragraph{Inductive Step:} Assume
+        $f(k) = (6k-3)\cdot 3^k+3$ when $k \geq 1$.
+        Then $f(k+1) = f(k) + 4(k+1) \cdot 3^{(k+1)}$.
+        Substituting $f(k)$ we get $f(k+1) = (6k-3)\cdot 3^k+3 + 4(k+1) \cdot 3^{(k+1)}$.
+        Exapnding $f(k+1) = 6k \cdot 3^k + 4k \cdot 3^{(k+1)} + 4 \cdot 3^{(k+1)} - 3 \cdot 3^k + 3$.
+        Substitute $3^k = \frac{3^{k+1}}{3}$ we get $f(k+1) = 2k \cdot 3^{k+1} + 4k \cdot 3^{(k+1)} + 4 \cdot 3^{(k+1)} - 3^{k+1} + 3$.
+        Simplify $f(k+1) = 6k \cdot 3^{(k+1)} + 3 \cdot 3^{(k+1)} + 3$.
+        Simplifying further we get $f(k+1) = (6k + 3) \cdot 3^{(k+1)} + 3 = (6(k + 1) - 3) \cdot 3^{(k+1)} + 3$.
+    \end{solutionorbox}
+
+    \clearpage
+
+
+
+
+    \section*{Midterm}
+
+    \question[10] The $abc$ conjecture states that there is a certain positive real number $\varepsilon$ such that
+    whenever $a,b,c$ are natural numbers with $c=a+b,$ all bigger than a certain $k\in \mathbb N,$ then $c$ is no bigger than the $\mathrm{rad}(abc)^{1+\varepsilon}.$ Here $\mathrm{rad}:\mathbb N\to \mathbb N$ is a certain function
+    whose definition you don't have to worry about. A student attempts to formalize this conjecture in predicate
+    logic as follows:
+    \[\exists\varepsilon\in (0,\infty)\forall (a,b,c)\in \mathbb N^3\exists k\in \mathbb N (a>k\wedge b>k\wedge c>k\to c\le \mathrm{rad}(abc)^{1+\varepsilon}.) \]
+    There are exactly two errors in the student's formalization. Explain what they are and how to fix them.
+
+    \begin{solutionorlines}[1in]
+        The students logic equates the sentence "There exists a positive real number $\varepsilon$ such that for all $a$, $b$, and $c$ in $\mathbb{N}$, there exists a $k$ in $N$ such that $a$, $b$, and $c$ are larger than $k$ then $c\le \mathrm{rad}(abc)^{1+\varepsilon}$."\\
+        This has two problems,
+        primarily it does not say anything about $c=a+b$ (which can be fixed by either adding that $c=a+b$ to his logic or by substituting $c$ for $a+b$ which would also reduce the variables),
+        and furthermore the student switched the relationship between $k$ and $a$, $b$, and $c$, which can be fixed by moving the $k$ before $a$, $b$, and $c$.
+
+        \[\exists\varepsilon\in (0,\infty)\exists k\in \mathbb N\forall (a,b)\in \{(x,y) | (x, y) \in \mathbb N^2 \land x > k \land y > k\} \exists c \in \{a + b\}(c\le \mathrm{rad}(abc)^{1+\varepsilon}) \]
+    \end{solutionorlines}
+    \question
+    \begin{parts}
+        \part[3] How many elements are in $\mathcal P(\{\mathrm{purdy},\{\mathrm{purdy}\}\})\cap \{\mathrm{purdy},\{\mathrm{purdy}\}\},$ where purdy is my anxious tabby cat? Explain why.
+
+        \begin{solutionorlines}[1in]
+            $$\mathcal P(\{\mathrm{purdy},\{\mathrm{purdy}\}\}) = \{\emptyset, \{\mathrm{purdy}\}, \{\{\mathrm{purdy}\}\}, \{\mathrm{purdy}, \{\mathrm{purdy}\}\}$$
+
+            The only common element between them is $\{\mathrm{purdy}\}$ so \linebreak $\mathcal P(\{\mathrm{purdy},\{\mathrm{purdy}\}\})\cap \{\mathrm{purdy},\{\mathrm{purdy}\}\} = \{\{\mathrm{purdy}\}\}$, which is one element.
+        \end{solutionorlines}
+
+        \part[7] Suppose $A$ and $B$ are finite sets with cardinalities $|A|=a$ and $|B|=b,$ with $b\ge a.$ In terms of $a$ and
+        $b,$ what are all the possibilities for $|A\cup B|?$ Show that all the possibilities you claim are possible,
+        and that no other possibilities are possible.
+
+        \begin{solutionorlines}[2in]
+            \paragraph{Case $A \subseteq B$:} This means that $\forall x \in A(x \in B)$. Therefore $A \cup B = B$ and therefore $|A\cup B| = |B| = b$.
+            \paragraph{Case $A \subset B$:} Let $C = A \cap B$ and $c = |C|$. Then $|A \cup B| = a + b - c$ where $c < a \land c < b$ since all of $B$'s and some of $A$'s elements are counted. Therefore $b < |A \cup B| < a + b$.
+            \paragraph{Case $A \nsubseteq B$:} Then $|A \cup B| = a + b$ as all elements from both $A$ and $B$ are counted.
+
+            \vspace{0.5cm}
+
+            Thus we have proben: $b \leq |A\cup B| \leq a + b$.
+        \end{solutionorlines}
+
+    \end{parts}
+
+    \question Say that a function $f:A\to B$ has the epi property if the following holds:
+    \[\forall X\in\mathrm{Set}\forall g,h:B\to X (g\circ f=h\circ f\to g=h.)\]
+    Here $\mathrm{Set}$ is the collection of all possible sets, so the first quantifier is over all sets
+    $X$ and the second, over all functions $B\to X.$
+    \begin{parts}
+        \part[2] Show that $f:\{a,b,c\}\to \{d,e\}$ given by $f(a)=d,f(b)=d,f(c)=e$ has the epi property.
+
+        \begin{solutionorlines}[3in]
+            Let $z_1, z_2, z_3, z_4 \in X$.
+            Let $g(d) = z_1$, $g(e) = z_2$, $h(d) = z_3$ and $h(e) = z_4$.
+            Then $g(f(a)) = g(f(b)) = z_1$, $h(f(a)) = h(f(b)) = z_3$, and $g(f(a)) = g(f(b)) = h(f(a)) = h(f(b))$, therefore $z_1 = z_3$.
+            Also $g(f(c)) = g(f(c)) = z_1$, $h(f(c)) = z_4$, and $g(f(c)) = h(f(c))$, therefore $z_2 = z_4$.
+            Therefore $g = h$ and $f$ has the epi property.
+        \end{solutionorlines}
+
+        \part[2] Show that $f:\{1,2,3\}\to \{4,5\}$ given by $f(1)=f(2)=f(3)=4$ does not have the epi property.
+        \begin{solutionorlines}[1.5in]
+            Let $z_1, z_2 \in X$.
+            Let $g(e) = z_1$, $h(e) = z_2$.
+            Since $g(e)$ and $h(e)$ do not exist in $g \circ f$ and $h \circ f$, $z_1$ does not have to equal $z_2$ and therefore $g$ does not have to equal $h$.
+            Thus $f$ does not have the epi property.
+        \end{solutionorlines}
+        \part[6] Conjecture and prove a more familiar way of describing a function with the epi property.
+        \begin{solutionorlines}[3in]
+            If and only if $\forall b \in B \exists a \in A(f(a) = b)$ ($f$ is \textbf{subjunctive}), then $f$ has the epi property.
+
+            $g = h \leftrightarrow \forall b \in B(g(b) = h(b))$, therefore if $f$ is subjunctive and $g\circ f=h\circ f$, then $g = h$ as $\forall b \in B \exists a \in A(g(f(a)) = g(f(a)))$.
+
+            Furthermore if $f$ isn't subjective, $\exists b \in B \forall a \in A(f(a) \notin B \to g(b) \neq h(b))$
+        \end{solutionorlines}
+    \end{parts}
+
+    \question For any $n\in \mathbb Z_{>0}$ and $k\in \mathbb Z_n,$ let $\mu_k:\mathbb Z_n\to \mathbb Z_n$ be the multiplication-by-$k$ function, so $\mu_k(m)=k\times_n m.$
+    \begin{parts}
+        \part[2] Give an example of an $n$ and a $k\ne 0$ for which $\mu_k$ is not injective. (Explain why not.)
+        \begin{solutionorlines}[0.5in]
+            Let $n = 10$, $k = 5$.
+
+            Since $\mu_5(5) = 25 \mod 10 = 5 = \mu_k(1)$
+        \end{solutionorlines}
+        \part[2] Give an example of an $n$ and a $k\ne 1$ for which $\mu_k$ is injective. (Prove it.)
+        \begin{solutionorlines}[1in]
+            Let $n = 3$ and $k = 2$.
+            \paragraph{0} $\mu_2(0) = 0 \mod 3 = 0$
+            \paragraph{1} $\mu_2(1) = 2 \mod 3 = 2$
+            \paragraph{2} $\mu_2(2) = 4 \mod 3 = 1$
+        \end{solutionorlines}
+        \part[6] Do your best to state and prove necessary and sufficient conditions on $n$ and $k$ which guarantee $\mu_k$ is injective.
+        \begin{solutionorlines}[3in]
+            $$\forall x \in Z_n \forall y \in Z_n(\mu_k(x) = \mu_k(y) \to x = y)$$
+            Therefore $kx = ky (\mod{n}) \to x = y$.
+
+            Assume $k = n - 1 \lor k = 1$ is the sufficient and necessary condition for $\mu_k$ to be injective.
+
+            Let $f(a) = (na - a) \mod n$
+            $$f(a) = ((na \mod n) - (a \mod n)) \mod n$$
+            $$ = ((((n \mod n)(a \mod n)) \mod n) - (a \mod n)) \mod n$$
+            $$ = ((((0)(a \mod n)) \mod n) - (a \mod n)) \mod n$$
+            $$ = (((0) \mod n) - (a \mod n)) \mod n$$
+            $$ = ((0 - (a \mod n)) \mod n$$
+            $$ = ((-(a \mod n))$$
+            $$ = -(a \mod n)$$
+
+            \paragraph{$k = n - 1$:}
+            $$(n - 1)x = (n - 1)y (\mod{n}) \to x = y$$
+            $$nx - x = ny - y (\mod{n}) \to x = y$$
+            $$(nx - x) \mod{n} = (ny - y) \mod n \to x = y$$
+            $$f(x) = f(y) \to x = y$$
+            $$-x = -y \to x = y$$
+            \paragraph{$k = 1$:}
+            $$(1)x = (1)y \to x = y$$
+            $$x = y \to x = y$$
+        \end{solutionorlines}
+    \end{parts}
+
+    \question Let $C$ be the set of real numbers defined recursively as follows:
+    \begin{itemize}
+        \item (Base case) $\mathbb Q\subseteq C$
+        \item (Recursive step) If $x,y\in C$ then $x+y,x-y,xy,x/y$ are in $C,$ and if $x\ge 0$ then so is $\sqrt x.$
+    \end{itemize}
+    \begin{parts}
+        \part[2] Give three examples of elements of $C$ that are significantly different-looking from each other.
+        \answerline[$34$, $\frac{321}{456}$, $\sqrt{345}$, $\frac{85\sqrt{432}}{453}$]
+        \part[1] Give an example of a real number which is not in $C.$
+        \answerline[$e$, $\pi$, $\tau$, etc.]
+        \part[7] Suppose we want to define a function $d:C\to \mathbb N$ such that $d(x)$ is the number of nested square
+        roots needed to express $x.$ What is wrong with this definition, and how could you improve it?
+        \begin{itemize}
+            \item $d(x)=0,$ if $x\in \mathbb Q$
+            \item $d(x+y)=d(x-y)=d(xy)=d(x/y)=\max(d(x),d(y)),$ and $d(\sqrt x)=d(x)+1,$ when $x>0.$
+        \end{itemize}
+        \begin{solutionorlines}[1in]
+            The problem is that it is undefined what happens if $x < 0$,
+            one way to mitigate this is to add another case that $d(xy) = d(y)$ when $x < 0$.
+        \end{solutionorlines}
+    \end{parts}
+
+    \bonusquestion (Bonus:) Consider an alphabet
+    $\Sigma.$ In principle, $\Sigma$ can be any
+    set, but you should think $\Sigma=\{0,1\}$
+    or $\Sigma = \{a,b,\ldots,z\}.$
+
+    The set $\mathcal R_\Sigma$
+    of \emph{regular languages} over $\Sigma$ is defined
+    as follows. Every element of $\mathcal R_\Sigma$ is
+    in particular a set of strings over $\Sigma;$ that is, $\mathcal R_\Sigma\subseteq \mathcal P(\Sigma^*).$
+    \begin{itemize}
+        \item $\emptyset\in \mathcal R_\Sigma$
+        \item $\forall s\in \Sigma, \{s\}\in \mathcal R_\Sigma$
+        \item $\forall S \in \mathcal R_\Sigma, S^*\in \mathcal R_\Sigma,$ where $S^*$ is the smallest set
+              containing $S$ and closed under concatenation. (So it contains all concatenations of $n$ strings from $S,$ for every $n.$)
+        \item The union $S\cup T$ and concatenation $S\bullet T=\{st\mid s\in S,t\in T\}$ are in $\mathcal R_\Sigma$ whenever $S$ and $T$ are.
+    \end{itemize}
+
+    Prove that, with $\Sigma=\{0,1\},$ the set $S$ of
+    bit strings that flip bits at most once (so
+    $S$ contains $000011111$ and $11111$ but not $010$) is
+    a regular language.
+    \begin{solutionorlines}[7in]
+        Let $S_k$ be the set of bit strings of $k$ bits that flip at most once.
+        Let $T_1 = \{1\}$.
+        Let $T_k$ be the set of $k$ $1$s.
+        Let $F_1 = \{0\}$.
+        Let $F_k$ be the set of $k$ $0$s.
+
+        \paragraph{Base Step:} Since $\forall s \in \Sigma, \{s\} \in \mathcal R_\Sigma$, $T_0 = \{1\}$ is a regular language.
+        \paragraph{Inductive Step:}
+        Assume that $T_k \in \mathcal R_\Sigma$.
+        Since $S\bullet T=\{st\mid s\in S,t\in T\}$ are in $\mathcal R_\Sigma$,
+        if we substitute $T_0$ for $S$ and $T_k$ for $T$,
+        we get $T_{k+1} = T_0 \bullet T_k = {t_0t_k | t_0 \in T_0, t_k \in T_k}$
+        which is all in $\mathcal R_\Sigma$.
+
+        \paragraph{Base Step:} Since $\forall s \in \Sigma, \{s\} \in \mathcal R_\Sigma$, $F_0 = \{0\}$ is a regular language.
+        \paragraph{Inductive Step:}
+        Assume that $F_k \in \mathcal R_\Sigma$.
+        Since $S\bullet F=\{st\mid s\in S,t\in F\}$ are in $\mathcal R_\Sigma$,
+        if we substitute $F_0$ for $S$ and $F_k$ for $F$,
+        we get $F_{k+1} = F_0 \bullet F_k = {f_0f_k | f_0 \in F_0, f_k \in F_k}$
+        which is all in $\mathcal R_\Sigma$.
+
+        \paragraph{Base Step:}
+        Since $S \in \mathcal R_\Sigma \land T \mathcal R_\Sigma \implies S \cup T \in \mathcal R_\Sigma$,
+        and $S_0 = T_0 \cup F_0$ and $T_0, F_0  \in \mathcal R_\Sigma$, $S_0  \in \mathcal R_\Sigma$.
+
+        \paragraph{Inductive Step:}
+        Let $a, b \in \mathbb N(a + b = k)$.
+        Since $S\bullet F=\{st\mid s\in S,t\in F\}$ and $S\cup T$ are in $\mathcal R_\Sigma$ if $S$ and $T$ are,
+        if we substitute $T_a \cup F_a$ for $S$ and $T_b \cup F_b$ for $F$,
+        we get $S_k = (T_a \cup F_a) \bullet (T_b \cup F_b)$ which is in $\mathcal R_\Sigma$.
+        
+        Since $S = \bigcup_i^\infty S_i$, $S \in \mathcal R_\Sigma$ as $S_k in \mathcal R_\Sigma$ and $S,T \in \mathcal R_\Sigma \to S \cup T$
+    \end{solutionorlines}
+\end{questions}
+\end{document}

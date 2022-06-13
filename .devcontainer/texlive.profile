@@ -1,4 +1,4 @@
-selected_scheme scheme-infraonly
+selected_scheme scheme-small
 TEXDIR /texlive
 TEXMFCONFIG ${HOME}/.texlive/texmf-config
 TEXMFHOME ${HOME}/.texlive/texmf
